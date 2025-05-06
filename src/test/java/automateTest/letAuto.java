@@ -22,18 +22,48 @@ public class letAuto extends envTarget {
         driver.get(baseUrl);
         Duration duration = Duration.ofSeconds(10);
         WebDriverWait wait = new WebDriverWait(driver, duration);
+
+        // click Page object Model
         wait.until(
                 ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//a[contains(text(),'Page Object Model')]"))
         );
         driver.findElement(By.xpath("//*[@class='title has-text-centered'][contains(text(), 'Ready to be a Pro Engineer')]"));
         driver.findElement(By.xpath("//a[contains(text(),'Page Object Model')]")).click();
+
+        // click product Backpack
         wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(@class,'card-footer-item')]"))
         );
         driver.findElement(By.className("title"));
-        WebElement button = driver.findElement(By.xpath("//button[contains(@class, 'card-footer-item')]"));
+        WebElement button = driver.findElement(By.xpath("//button[contains(@class,'card-footer-item')]"));
         ((JavascriptExecutor)driver).executeScript("arguments[0].click();", button);
+
+        // Order backpack via button Add to Cart
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.//span[text()='Add to Cart']]"))
+        );
+        driver.findElement(By.xpath("//h2[@class='title mt-2']"));
+        driver.findElement(By.xpath("//button[.//span[text()='Add to Cart']]")).click();
+
+        // Then return to Products
+        driver.findElement(By.xpath("//button[.//span[text()='Products']]")).click();
+        driver.findElement(By.className("title"));
+
+        // Click item t-shirt
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//footer[contains(@class, 'card-footer')]//button[contains(text(), '₹ 22.3')]"))
+        );
+        driver.findElement(By.className("title"));
+        WebElement button1 = driver.findElement(By.xpath("//button[contains(text(), '₹ 22.3')]"));
+        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", button1);
+
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.//span[text()='Add to Cart']]"))
+        );
+        driver.findElement(By.xpath("//h2[@class='title mt-2']"));
+        driver.findElement(By.xpath("//button[.//span[text()='Add to Cart']]")).click();
+
         driver.quit();
     }
 }
