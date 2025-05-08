@@ -45,7 +45,6 @@ public class letAuto extends envTarget {
         );
         driver.findElement(By.xpath("//h2[@class='title mt-2']"));
         driver.findElement(By.xpath("//button[.//span[text()='Add to Cart']]")).click();
-
         // Then return to Products
         driver.findElement(By.xpath("//button[.//span[text()='Products']]")).click();
         driver.findElement(By.className("title"));
@@ -63,6 +62,38 @@ public class letAuto extends envTarget {
         );
         driver.findElement(By.xpath("//h2[@class='title mt-2']"));
         driver.findElement(By.xpath("//button[.//span[text()='Add to Cart']]")).click();
+        driver.findElement(By.xpath("//button[.//span[text()='Products']]")).click();
+        driver.findElement(By.className("title"));
+
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(), '₹ 55.99')]"))
+        );
+        driver.findElement(By.className("title"));
+        WebElement button2 = driver.findElement(By.xpath("//button[contains(text(), '₹ 55.99')]"));
+        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", button2);
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.//span[text()='Add to Cart']]"))
+        );
+        driver.findElement(By.xpath("//h2[@class='title mt-2']"));
+        driver.findElement(By.xpath("//button[.//span[text()='Add to Cart']]")).click();
+        driver.findElement(By.xpath("//button[.//span[text()='Products']]")).click();
+        driver.findElement(By.className("title"));
+
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(), '₹ 55.99')]"))
+        );
+        driver.findElement(By.className("title"));
+        WebElement button3 = driver.findElement(By.xpath("//button[contains(text(), '₹ 15.99')]"));
+        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", button3);
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.//span[text()='Add to Cart']]"))
+        );
+        driver.findElement(By.xpath("//h2[@class='title mt-2']"));
+        driver.findElement(By.xpath("//button[.//span[text()='Add to Cart']]")).click();
+        driver.findElement(By.xpath("//button[.//span[text()='Products']]")).click();
+        driver.findElement(By.className("title"));
+
+
 
         driver.quit();
     }
